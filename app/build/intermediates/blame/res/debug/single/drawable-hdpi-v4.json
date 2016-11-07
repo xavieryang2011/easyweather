@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/project/gitHub/coolweather1/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/home.png",
+        "source": "/project/gitHub/coolweather1/app/src/main/res/drawable-hdpi/home.png"
+    },
+    {
+        "merged": "/project/gitHub/coolweather1/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/logo.png",
+        "source": "/project/gitHub/coolweather1/app/src/main/res/drawable-hdpi/logo.png"
+    },
+    {
+        "merged": "/project/gitHub/coolweather1/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png",
+        "source": "/project/gitHub/coolweather1/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/project/gitHub/coolweather1/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/refresh.png",
+        "source": "/project/gitHub/coolweather1/app/src/main/res/drawable-hdpi/refresh.png"
+    }
+]

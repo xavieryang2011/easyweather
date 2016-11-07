@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/project/gitHub/coolweather1/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="3effa72911a02898ad96c2947ed1afb02f3570ae">
+        <dex dex="/project/gitHub/coolweather1/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_7929e6ee09b2aa97e042a1dcb0dd9d3eafec3998/classes.dex" />
+    </item>
+    <item
+        jar="/Users/yangxh/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/18.0.0/support-v4-18.0.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
+        <dex dex="/project/gitHub/coolweather1/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-v4-18.0.0_0523697c7aba38f038a368e4e5941c830747942e/classes.dex" />
+    </item>
+    <item
+        jar="/project/gitHub/coolweather1/app/libs/YoumiSdk_v4.06_2013-11-18.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="3afb42de96d6cda485db1ebf6828c49eee80caad">
+        <dex dex="/project/gitHub/coolweather1/app/build/intermediates/transforms/dex/debug/folders/1000/2/YoumiSdk_v4.06_2013-11-18_7f8da35eca4db40fcf71647024b78764cffe5517/classes.dex" />
+    </item>
+    <item
+        jar="/project/gitHub/coolweather1/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="73006b591f10fd47976b86a4b78a89588d9e1f21">
+        <dex dex="/project/gitHub/coolweather1/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_a54f32c81cc8dbda2fc894a791b5209189da5cb2/classes.dex" />
+    </item>
+
+</items>
