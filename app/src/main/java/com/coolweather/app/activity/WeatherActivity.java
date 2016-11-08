@@ -119,8 +119,9 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	 * 查询县级代号所对应的天气代号。
 	 */
 	private void queryWeatherCode(String countyCode) {
-		String address = "http://www.weather.com.cn/data/list3/city" + countyCode + ".xml";
-		queryFromServer(address, "countyCode");
+		countyCode="beijing";
+		String address = "https://api.thinkpage.cn/v3/weather/now.json?key=fyitiko3nqhjiavc&language=zh-Hans&unit=c&location="+countyCode;
+		queryFromServer(address, "weatherCode");
 	}
 
 	/**
