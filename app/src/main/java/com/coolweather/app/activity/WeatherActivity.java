@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -128,7 +129,8 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	 * 查询天气代号所对应的天气。
 	 */
 	private void queryWeatherInfo(String weatherCode) {
-		String address = "http://www.weather.com.cn/data/cityinfo/" + weatherCode + ".html";
+		weatherCode="beijing";
+		String address = "https://api.thinkpage.cn/v3/weather/now.json?key=fyitiko3nqhjiavc&language=zh-Hans&unit=c&location="+weatherCode;
 		queryFromServer(address, "weatherCode");
 	}
 	
@@ -150,6 +152,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 					}
 				} else if ("weatherCode".equals(type)) {
 					// 处理服务器返回的天气信息
+					Log.d("response",response);
 					Utility.handleWeatherResponse(WeatherActivity.this, response);
 					runOnUiThread(new Runnable() {
 						@Override

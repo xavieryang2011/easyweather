@@ -45,7 +45,8 @@ public class AutoUpdateService extends Service {
 	private void updateWeather() {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		String weatherCode = prefs.getString("weather_code", "");
-		String address = "http://www.weather.com.cn/data/cityinfo/" + weatherCode + ".html";
+		weatherCode="beijing";
+		String address = "https://api.thinkpage.cn/v3/weather/now.json?key=fyitiko3nqhjiavc&language=zh-Hans&unit=c&location="+weatherCode;
 		HttpUtil.sendHttpRequest(address, new HttpCallbackListener() {
 			@Override
 			public void onFinish(String response) {

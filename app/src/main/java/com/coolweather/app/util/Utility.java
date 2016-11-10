@@ -100,8 +100,8 @@ public class Utility {
 
 			String cityName = locationInfo.getString("name");
 			String weatherCode = weatherInfo.optString("cityid");
-			String temp1 = weatherInfo.optString("code");
-			String temp2 = weatherInfo.optString("code");
+			String temp1 = weatherInfo.optString("temperature");
+			String temp2 = weatherInfo.optString("temperature");
 			String weatherDesp = weatherInfo.getString("text");
 			String publishTime = resultInfo.getString("last_update");
 			saveWeatherInfo(context, cityName, weatherCode, temp1, temp2,
