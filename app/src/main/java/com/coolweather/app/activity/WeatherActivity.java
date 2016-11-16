@@ -21,6 +21,11 @@ import com.coolweather.app.service.AutoUpdateService;
 import com.coolweather.app.util.HttpCallbackListener;
 import com.coolweather.app.util.HttpUtil;
 import com.coolweather.app.util.Utility;
+import com.coolweather.app.util.Utils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import okhttp3.Call;
 
 public class WeatherActivity extends Activity implements OnClickListener{
 
@@ -121,7 +126,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	 */
 	private void queryWeatherCode(String countyCode) {
 		countyCode="beijing";
-		String address = "https://api.thinkpage.cn/v3/weather/now.json?key=fyitiko3nqhjiavc&language=zh-Hans&unit=c&location="+countyCode;
+		String address = "https://api.thinkpage.cn/v3/weather/now.json";
 		queryFromServer(address, "weatherCode");
 	}
 
@@ -130,7 +135,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	 */
 	private void queryWeatherInfo(String weatherCode) {
 		weatherCode="beijing";
-		String address = "https://api.thinkpage.cn/v3/weather/now.json?key=fyitiko3nqhjiavc&language=zh-Hans&unit=c&location="+weatherCode;
+		String address = "https://api.thinkpage.cn/v3/weather/now.json";
 		queryFromServer(address, "weatherCode");
 	}
 	
@@ -138,41 +143,50 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	 * 根据传入的地址和类型去向服务器查询天气代号或者天气信息。
 	 */
 	private void queryFromServer(final String address, final String type) {
-		HttpUtil.sendHttpRequest(address, new HttpCallbackListener() {
-			@Override
-			public void onFinish(final String response) {
-				if ("countyCode".equals(type)) {
-					if (!TextUtils.isEmpty(response)) {
-						// 从服务器返回的数据中解析出天气代号
-						String[] array = response.split("\\|");
-						if (array != null && array.length == 2) {
-							String weatherCode = array[1];
-							queryWeatherInfo(weatherCode);
-						}
-					}
-				} else if ("weatherCode".equals(type)) {
-					// 处理服务器返回的天气信息
-					Log.d("response",response);
-					Utility.handleWeatherResponse(WeatherActivity.this, response);
-					runOnUiThread(new Runnable() {
-						@Override
-						public void run() {
-							showWeather();
-						}
-					});
-				}
-			}
-			
-			@Override
-			public void onError(Exception e) {
-				runOnUiThread(new Runnable() {
+		OkHttpUtils
+				.get()
+				.url(address)
+				.addParams("key", Utils.weatherKey)
+				.addParams("language",Utils.weatherUnit)
+				.addParams("unit",Utils.weatherUnit)
+				.addParams("location","beijing")
+				.build()
+				.execute(new StringCallback() {
 					@Override
-					public void run() {
-						publishText.setText("同步失败");
+					public void onError(Call call, Exception e, int id) {
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								publishText.setText("同步失败");
+							}
+						});
+					}
+
+					@Override
+					public void onResponse(String response, int id) {
+						if ("countyCode".equals(type)) {
+							if (!TextUtils.isEmpty(response)) {
+								// 从服务器返回的数据中解析出天气代号
+								String[] array = response.split("\\|");
+								if (array != null && array.length == 2) {
+									String weatherCode = array[1];
+									queryWeatherInfo(weatherCode);
+								}
+							}
+						} else if ("weatherCode".equals(type)) {
+							// 处理服务器返回的天气信息
+							Log.d("response",response);
+							Utility.handleWeatherResponse(WeatherActivity.this, response);
+							runOnUiThread(new Runnable() {
+								@Override
+								public void run() {
+									showWeather();
+								}
+							});
+						}
 					}
 				});
-			}
-		});
+
 	}
 	
 	/**
