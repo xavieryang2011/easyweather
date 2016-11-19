@@ -147,7 +147,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 				.get()
 				.url(address)
 				.addParams("key", Utils.weatherKey)
-				.addParams("language",Utils.weatherUnit)
+				.addParams("language",Utils.weatherLan)
 				.addParams("unit",Utils.weatherUnit)
 				.addParams("location","beijing")
 				.build()
@@ -195,7 +195,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	private void showWeather() {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		cityNameText.setText( prefs.getString("city_name", ""));
-		temp1Text.setText(prefs.getString("temp1", ""));
+		temp1Text.setText(prefs.getString("temp1", "")+"\u2103");
 		temp2Text.setText(prefs.getString("temp2", ""));
 		weatherDespText.setText(prefs.getString("weather_desp", ""));
 		publishText.setText("今天" + prefs.getString("publish_time", "") + "发布");
